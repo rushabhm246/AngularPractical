@@ -1,0 +1,12 @@
+.container{
+    width: 60vw;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirm-btn{
+    display: flex;
+    justify-content: space-around;
+}

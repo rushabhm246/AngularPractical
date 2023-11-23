@@ -1,0 +1,32 @@
+<mat-toolbar color="primary" class="toolbar">
+        <span>BLOGS</span>
+        <span class="example-spacer"></span>
+        <button mat-raised-button color="accent" (click)="openDialog()">ADD Blog</button>
+</mat-toolbar>
+    <div>
+        <table>
+            <thead>
+                <tr class="table-header">
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Tags</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="blogList && blogList.length > 0; else noRecordFound">
+                <tr class="table-body" *ngFor="let blog of blogList">
+                    <td>{{blog.title}}</td>
+                    <td>{{blog.description}}</td>
+                    <td *ngIf="blog.tags && blog.tags.length > 0">
+                         <span *ngFor="let tag of blog.tags;let i = index">{{i < blog.tags.length - 1 ? tag + ',' : tag}}</span>
+                    <td>
+                        <mat-icon (click)="onEdit(blog.id)">edit</mat-icon>
+                        <mat-icon (click)="deleteDialog(blog.id)">delete</mat-icon>
+                    </td>
+                </tr>
+            </tbody>
+            <ng-template #noRecordFound>
+                No Records Found
+            </ng-template>
+        </table>
+    </div>
